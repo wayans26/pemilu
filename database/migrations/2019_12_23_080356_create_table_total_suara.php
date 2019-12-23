@@ -13,9 +13,13 @@ class CreateTableTotalSuara extends Migration
      */
     public function up()
     {
-        Schema::create('table_total_suara', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('tbtotalsuara', function (Blueprint $table) {
+            $table->bigIncrements('id_totalsuara');
+            $table->string('nim', 10);
+            $table->integer('totalsuara');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->foreign('nim')->references('nim')->on('tbkandidat');
         });
     }
 
@@ -26,6 +30,6 @@ class CreateTableTotalSuara extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_total_suara');
+        Schema::dropIfExists('tbtotalsuara');
     }
 }

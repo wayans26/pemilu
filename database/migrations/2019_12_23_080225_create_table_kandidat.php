@@ -13,9 +13,12 @@ class CreateTableKandidat extends Migration
      */
     public function up()
     {
-        Schema::create('table_kandidat', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('tbkandidat', function (Blueprint $table) {
+            $table->string('nim', 10);
+            $table->string('nama_lengkap', 100);
+            $table->string('jurusan', 50);
+            $table->string('photo',200);
+            $table->primary('nim');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateTableKandidat extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_kandidat');
+        Schema::dropIfExists('tbkandidat');
     }
 }

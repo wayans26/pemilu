@@ -11,19 +11,12 @@ use DB;
 
 class loginController extends Controller
 {
-    //
-
-    // function __construct(loginModel $login){
-    //     if($login->isLogin()){
-
-    //     }
-    // }
     function index(Request $req, loginModel $login){
         // tbpemilih::create([
-        //     'nim'           => '170010139',
-        //     'nama_lengkap'  => 'Wayan Setiawan',
+        //     'nim'           => '180010131',
+        //     'nama_lengkap'  => 'Diah Cantiq',
         //     '_password'     => Hash::make('1duatiga'),
-        //     'level'         => 'Admin'
+        //     'level'         => 'Peserta'
         // ]);        
         if($login->isLogin()){
             return view('Page.index');
@@ -62,5 +55,10 @@ class loginController extends Controller
         else{
             return back()->with('status', 'Nim Atau Password Salah');
         }
+    }
+
+    function logout(Request $req){
+        $req->session()->flush();
+        return redirect('/');
     }
 }

@@ -32,9 +32,10 @@
                     <br>
                     <!-- <h4 class="modal-title">Vote Kandidat</h4> -->
                 </div>
-                <form method="GET" action="inc/vote.php">
+                <form method="POST" action="/vote">
+                    {{csrf_field()}}
                     <div class="modal-body">
-                        <input type="text" name="id_kandidat" value="" hidden="true">
+                        <input type="text" name="nim" value="{{$item->nim}}" hidden="true">
                         <h3 style="color: black;">Yakin ingin memilih <strong>
                             </strong> ?</h3>
                         <h3 style="color: black;"><strong>Administrator </strong>tidak dapat melakukan

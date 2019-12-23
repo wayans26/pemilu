@@ -13,15 +13,13 @@ class CreateTableDetailSuara extends Migration
      */
     public function up()
     {
-        Schema::create('table_detail_suara', function (Blueprint $table) {
-            $table->string('nim', 10);
-            $table->string('nama_lengkap', 100);
-            $table->string('_password', 200);
-            $table->tinyInteger('status_memilih')->default(0);
-            $table->tinyInteger('status_register')->default(0);
-            $table->string('level', 20);
+        Schema::create('tbdetailsuara', function (Blueprint $table) {
+            $table->bigIncrements('id_detailsuara');
+            $table->string('nim_kandidat', 10);
+            $table->string('nim_pemilih', 10);
             $table->timestamp('create_at')->useCurrent();
-            $table->primary('nim');
+            $table->foreign('nim_kandidat')->references('nim')->on('tbkandidat');
+            $table->foreign('nim_pemilih')->references('nim')->on('tbpemilih');
         });
     }
 
@@ -32,6 +30,6 @@ class CreateTableDetailSuara extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_detail_suara');
+        Schema::dropIfExists('tb_detailsuara');
     }
 }

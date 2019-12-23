@@ -13,5 +13,6 @@
 Route::get('/logout', 'Login\loginController@logout');
 Route::get('/', 'Login\loginController@index');
 Route::post('/', 'Login\loginController@prosesLogin');
+Route::post('/vote', 'Dashboard\dashboardController@vote');
 
 Route::get('/example', 'Dashboard\dashboardController@example');

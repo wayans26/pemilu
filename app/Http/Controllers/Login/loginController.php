@@ -26,7 +26,7 @@ class loginController extends Controller
         //     'level'         => 'Admin'
         // ]);        
         if($login->isLogin()){
-            return "Login";
+            return view('Page.index');
         }
         else{
             return view('Login.formLogin');

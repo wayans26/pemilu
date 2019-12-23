@@ -15,4 +15,7 @@ Route::get('/', 'Login\loginController@index');
 Route::post('/', 'Login\loginController@prosesLogin');
 Route::post('/vote', 'Dashboard\dashboardController@vote');
 
+Route::get('/status', 'Dashboard\statusController@index');
+Route::post('/status', 'Dashboard\statusController@getStatus');
+
 Route::get('/example', 'Dashboard\dashboardController@example');

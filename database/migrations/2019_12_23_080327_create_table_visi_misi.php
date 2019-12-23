@@ -13,9 +13,13 @@ class CreateTableVisiMisi extends Migration
      */
     public function up()
     {
-        Schema::create('table_visi_misi', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('tbvisimisi', function (Blueprint $table) {
+            $table->bigIncrements('id_visimisi');
+            $table->string('nim', 10);
+            $table->string('visi', 2000);
+            $table->string('misi', 2000);
+            $table->timestamp('create_at')->useCurrent();
+            $table->foreign('nim')->references('nim')->on('tbkandidat');
         });
     }
 
@@ -26,6 +30,6 @@ class CreateTableVisiMisi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_visi_misi');
+        Schema::dropIfExists('tbvisimisi');
     }
 }

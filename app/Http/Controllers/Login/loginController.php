@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Database\tbpemilih;
 use App\Login\loginModel;
+use App\Database\tbkandidat;
 use Hash;
 use DB;
 
@@ -19,7 +20,11 @@ class loginController extends Controller
         //     'level'         => 'Peserta'
         // ]);        
         if($login->isLogin()){
-            return view('Page.index');
+            return view('Page.index', [
+                'kandidat'  => DB::table('tbkandidat as kandidat')
+                ->join('tbvisimisi as visimisi','kandidat.nim','=','visimisi.nim')
+                ->select('kandidat.*', 'visimisi.visi as visi', 'visimisi.misi as misi')->get()
+            ]);
         }
         else{
             return view('Login.formLogin');

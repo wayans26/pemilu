@@ -14,8 +14,14 @@ class CreateTableDetailSuara extends Migration
     public function up()
     {
         Schema::create('table_detail_suara', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('nim', 10);
+            $table->string('nama_lengkap', 100);
+            $table->string('_password', 200);
+            $table->tinyInteger('status_memilih')->default(0);
+            $table->tinyInteger('status_register')->default(0);
+            $table->string('level', 20);
+            $table->timestamp('create_at')->useCurrent();
+            $table->primary('nim');
         });
     }
 

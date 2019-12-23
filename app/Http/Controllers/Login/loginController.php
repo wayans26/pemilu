@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Database\tbpemilih;
 use App\Login\loginModel;
 use App\Database\tbkandidat;
+use App\Database\tbstatus;
 use Hash;
 use DB;
 
@@ -39,6 +40,11 @@ class loginController extends Controller
         if(sizeof($user) > 0){
             foreach($user as $item){
                 if($item->status_memilih !== 1 && $item->status_register === 1){
+                    tbstatus::create([
+                        'nim'           => $item->nim,
+                        'ip_address'    => $_SERVER['REMOTE_ADDR'],
+                        'status'        => 'online'
+                    ]);
                     $req->session()->put([
                         'login' => True,
                         'nim'   => $item->nim,
@@ -63,6 +69,11 @@ class loginController extends Controller
     }
 
     function logout(Request $req){
+        tbstatus::where([
+            'ip_address'    => $_SERVER['REMOTE_ADDR']
+        ])->update([
+            'status'        => 'offline'
+        ]);
         $req->session()->flush();
         return redirect('/');
     }

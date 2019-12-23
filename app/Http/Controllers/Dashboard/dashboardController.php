@@ -8,6 +8,7 @@ use App\Database\tbkandidat;
 use App\Database\tbvisimisi;
 use App\Database\tbtotalsuara;
 use App\Database\tbdetailsuara;
+use App\Database\tbstatus;
 use App\Login\loginModel;
 use App\Database\tbpemilih;
 use DB;
@@ -49,7 +50,12 @@ class dashboardController extends Controller
             if(tbtotalsuara::where(['nim' => $req->input('nim')])->increment('totalsuara',1)){   
                 tbpemilih::where(['nim' => $req->session()->get('nim')])->update([
                     'status_memilih'    => 1
-                ]);         
+                ]);  
+                tbstatus::where([
+                    'ip_address'    => $_SERVER['REMOTE_ADDR']
+                ])->update([
+                    'status'        => 'offline'
+                ]);    
                 $req->session()->flush();
                 return redirect('/');
             }

@@ -11,6 +11,21 @@
     errorAlert("{!! Session::get('status-update-gagal') !!}");
 
 </script>
+@elseif(Session::has('status-tambah-berhasil'))
+<script>
+    successAlert("{!! Session::get('status-tambah-berhasil') !!}");
+
+</script>
+@elseif(Session::has('status-tambah-gagal'))
+<script>
+    errorAlert("{!! Session::get('status-tambah-gagal') !!}");
+
+</script>
+@elseif(Session::has('status-hapus-berhasil'))
+<script>
+    successAlert("{!! Session::get('status-hapus-berhasil') !!}");
+
+</script>
 @endif
 <div class="row">
     <div class="card">
@@ -88,9 +103,10 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <br>
-                            <form method="POST" action="/kandidat/hapus/{{$item->nim}}">
+                            <form method="POST" action="/kandidat/hapus">
+                                {{csrf_field()}}
                                 <div class="modal-body">
-                                    <input type="text" hidden="true" name="id_kandidat" value="">
+                                    <input type="text" hidden="true" name="nim" value="{{$item->nim}}">
                                     <h3 style="color: black;">Yakin ingin menghapus data kandidat <center>
                                             <strong>{{$item->nama_lengkap}}</strong></center>
                                     </h3>
@@ -122,6 +138,7 @@
                 <h4 class="modal-title">Tambah Calon kandidat</h4>
             </div>
             <form method="POST" action="/kandidat/tambah" enctype="multipart/form-data">
+                {{csrf_field()}}
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="control-label" style="color: black;">Nama</label>
@@ -139,7 +156,7 @@
                         </select>
                     </div>
                     <p>Photo <br>
-                        <input type="file" name="photo"></p>
+                        <input type="file" name="gambar"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" name="btnUpdate">Tambah</button>

@@ -19,6 +19,9 @@
     <script src="assets/js/jquery-3.1.1.slim.min.js"></script>
     <script src="assets/js/parsley.min.js"></script>
     <script src="assets/js/validator.js"></script>
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
+    <script src="assets/js/sweetalert2.min.js"></script>
+    <script src="assets/js/sweetalertFunction.js"></script>
     <link rel="stylesheet" href="assets/css/parsley.css">
 </head>
 
@@ -91,6 +94,17 @@
             </footer>
         </div>
     </div>
+    @if (Session::has('status-vote-berhasil'))
+    <script>
+        successAlert("Vote berhasil");
+
+    </script>
+    @elseif(Session::has('status-vote-gagal'))
+    <script>
+        errorAlert("Vote gagal");
+
+    </script>
+    @endif
 
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery.min.js"></script>

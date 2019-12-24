@@ -15,6 +15,22 @@ class statusController extends Controller
     }
 
     function getStatus(Request $req){
-        return "masuk";
+        $data = tbstatus::where([
+            'status'    => 'online'
+        ])->get();
+
+        if(sizeof($data) > 0){
+            return json_encode(array(
+                'status'    => 1,
+                'message'   => 'berhasil',
+                'data'      => $data
+            ));
+        }
+        else{
+            return json_encode(array(
+                'status'    => 0,
+                'message'   => 'Gagal'
+            ));
+        }
     }
 }

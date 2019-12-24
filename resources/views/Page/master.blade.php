@@ -35,14 +35,14 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="active ">
+                    <li class="@yield('dashboard')">
                         <a href="/">
                             <i class="fa fa-home"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     @if (Session::get('level') === 'Admin')
-                    <li>
+                    <li class="@yield('status')">
                         <a href="/status">
                             <i class="fa fa-users"></i>
                             <p>Status Pemilih</p>
@@ -144,7 +144,7 @@
                             document.write(new Date().getFullYear())
 
                         </script> by
-                        <a href="javascript:void(0)">Wayan Setiawan</a>
+                        <a href="https://www.instagram.com/wayans26/?hl=id" target="_blank">Wayan Setiawan</a>
                     </div>
                 </div>
             </footer>

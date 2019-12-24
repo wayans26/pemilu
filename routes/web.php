@@ -32,4 +32,6 @@ Route::post('/pemilih/active', 'Dashboard\pemilihController@activePemilih');
 Route::get('/perolehansuara', 'Dashboard\perolehansuaraController@index');
 Route::post('/perolehansuara/get', 'Dashboard\perolehansuaraController@getPerolehansuara');
 
+Route::get('/detailsuara', 'Dashboard\detailsuaraController@index');
+
 Route::get('/example', 'Dashboard\dashboardController@example');

@@ -69,8 +69,8 @@
                             <p>Perolehan Suara</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="menu/detSuara.php">
+                    <li class="@yield('detailsuara')">
+                        <a href="/detailsuara">
                             <i class="fas fa-chart-line"></i>
                             <p>Detail Suara Masuk</p>
                         </a>

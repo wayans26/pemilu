@@ -1,27 +1,5 @@
 
-/vendor/mockery
-/vendor/league
-/vendor/monolog
-/vendor/nikic
-/vendor/nunomaduro
-/vendor/myclabs
-/vendor/paragonie
-/vendor/opis
-/vendor/nesbot
-/vendor/phar-io
-/vendor/phpdocumentor
-/vendor/phpspec
-/vendor/phpoption
-/vendor/filp
-/vendor/psy
-/vendor/psr
-/vendor/ramsey
 /vendor/sebastian
 /vendor/swiftmailer
 /vendor/symfony
-/vendor/theseer
-/vendor/vlucas
-/vendor/webmozart
-/vendor/tijsverkoyen
-/vendor/phpunit
 laravel fresh.zip

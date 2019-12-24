@@ -23,4 +23,13 @@ Route::post('/kandidat/update', 'Dashboard\kandidatController@updateKandidat');
 Route::post('/kandidat/tambah', 'Dashboard\kandidatController@tambahKandidat');
 Route::post('/kandidat/hapus', 'Dashboard\kandidatController@hapusKandidat');
 
+Route::get('/pemilih', 'Dashboard\pemilihController@index');
+Route::post('/pemilih/update', 'Dashboard\pemilihController@updatePemilih');
+Route::post('/pemilih/tambah', 'Dashboard\pemilihController@tambahPemilih');
+Route::post('/pemilih/hapus', 'Dashboard\pemilihController@hapusPemilih');
+Route::post('/pemilih/active', 'Dashboard\pemilihController@activePemilih');
+
+Route::get('/perolehansuara', 'Dashboard\perolehansuaraController@index');
+Route::post('/perolehansuara/get', 'Dashboard\perolehansuaraController@getPerolehansuara');
+
 Route::get('/example', 'Dashboard\dashboardController@example');

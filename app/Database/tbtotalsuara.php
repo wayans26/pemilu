@@ -9,6 +9,6 @@ class tbtotalsuara extends Model
     //
     // public $timestamps = false;
     protected $table = 'tbtotalsuara';
-    protected $primaryKey = 'id_totalsuara';
+    protected $foreignKey = 'nim';
     protected $fillable = ['nim', 'totalsuara'];
 }

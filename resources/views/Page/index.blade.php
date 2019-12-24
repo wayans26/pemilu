@@ -1,6 +1,11 @@
 @extends('Page.master')
 @section('dashboard', 'active')
 @section('konten')
+@if (Session::has('status-vote-gagal'))
+    <script>
+    errorAlert("Vote Gagal")
+    </script>
+@endif
 <div class="row">
     @foreach ($kandidat as $key=>$item)
     <div class="col-md-3">

@@ -19,6 +19,8 @@ Route::get('/status', 'Dashboard\statusController@index');
 Route::post('/status', 'Dashboard\statusController@getStatus');
 
 Route::get('/kandidat', 'Dashboard\kandidatController@index');
-// Route::post('/kandidat', 'Dashboard\kandidatController@getStatus');
+Route::post('/kandidat/update', 'Dashboard\kandidatController@updateKandidat');
+Route::post('/kandidat/tambah', 'Dashboard\kandidatController@tambahKandidat');
+Route::post('/kandidat/hapus', 'Dashboard\kandidatController@hapusKandidat');
 
 Route::get('/example', 'Dashboard\dashboardController@example');

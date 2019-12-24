@@ -57,7 +57,10 @@ class dashboardController extends Controller
                     'status'        => 'offline'
                 ]);    
                 $req->session()->flush();
-                return redirect('/');
+                return redirect('/')->with('status-vote-berhasil', 'Vote Berhasil');
+            }
+            else{
+                return redirect('/')->with('status-vote-gagal', 'Vote Gagal');
             }
         }
         else{

@@ -1,6 +1,4 @@
 
-/vendor/laravel
-/vendor/jakub-onderka
 /vendor/mockery
 /vendor/league
 /vendor/monolog

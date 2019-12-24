@@ -57,14 +57,14 @@
                             <p>Daftar Kandidat</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="menu/pemilih.php">
+                    <li class="@yield('pemilih')">
+                        <a href="/pemilih">
                             <i class="fa fa-user"></i>
                             <p>Daftar Pemilih</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="menu/perolehan.php">
+                    <li class="@yield('perolehansuara')">
+                        <a href="/perolehansuara">
                             <i class="far fa-chart-bar"></i>
                             <p>Perolehan Suara</p>
                         </a>

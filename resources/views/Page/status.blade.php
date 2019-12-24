@@ -20,6 +20,7 @@
     </div>
 </div>
 <script>
+    getStatus();
     setInterval(getStatus, 1000);
     $.ajaxSetup({
         headers: {
@@ -38,6 +39,11 @@
                 console.log(data);
                 setStatus($.parseJSON(data))
 
+            },
+            error: function (data) {
+                console.log(data);
+
+                getStatus();
             }
         });
     }

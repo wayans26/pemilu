@@ -15,6 +15,8 @@
     <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <body class="">
@@ -33,14 +35,21 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="active ">
-                        <a href="javascript:void(0)">
+                    <li class="@yield('dashboard')">
+                        <a href="/">
                             <i class="fa fa-home"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="menu/kandidat.php">
+                    @if (Session::get('level') === 'Admin')
+                    <li class="@yield('status')">
+                        <a href="/status">
+                            <i class="fa fa-users"></i>
+                            <p>Status Pemilih</p>
+                        </a>
+                    </li>
+                    <li class="@yield('kandidat')">
+                        <a href="/kandidat">
                             <i class="fa fa-users"></i>
                             <p>Daftar Kandidat</p>
                         </a>
@@ -63,12 +72,7 @@
                             <p>Detail Suara Masuk</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="menu/resetDatabase.php">
-                            <i class="fas fa-ban"></i>
-                            <p>Reset Database</p>
-                        </a>
-                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -134,7 +138,7 @@
                             document.write(new Date().getFullYear())
 
                         </script> by
-                        <a href="javascript:void(0)">Wayan Setiawan</a>
+                        <a href="https://www.instagram.com/wayans26/?hl=id" target="_blank">Wayan Setiawan</a>
                     </div>
                 </div>
             </footer>

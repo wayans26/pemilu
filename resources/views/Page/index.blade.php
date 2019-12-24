@@ -1,4 +1,5 @@
 @extends('Page.master')
+@section('dashboard', 'active')
 @section('konten')
 <div class="row">
     @foreach ($kandidat as $key=>$item)

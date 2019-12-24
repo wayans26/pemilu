@@ -21,4 +21,18 @@ class loginModel extends Model
             return False;
         }
     }
+
+    function isAdmin(){
+        if(Session::has('level')){
+            if(Session::get('level') === 'Admin'){
+                return True;
+            }
+            else{
+                return False;
+            }
+        }
+        else{
+            return False;
+        }
+    }
 }

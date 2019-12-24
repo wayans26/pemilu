@@ -48,8 +48,8 @@
                             <p>Status Pemilih</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="menu/kandidat.php">
+                    <li class="@yield('kandidat')">
+                        <a href="/kandidat">
                             <i class="fa fa-users"></i>
                             <p>Daftar Kandidat</p>
                         </a>
@@ -70,12 +70,6 @@
                         <a href="menu/detSuara.php">
                             <i class="fas fa-chart-line"></i>
                             <p>Detail Suara Masuk</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="menu/resetDatabase.php">
-                            <i class="fas fa-ban"></i>
-                            <p>Reset Database</p>
                         </a>
                     </li>
                     @endif

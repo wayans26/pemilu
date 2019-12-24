@@ -16,6 +16,9 @@
     <!-- CSS Files -->
     <link href="assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
+    <script src="assets/js/sweetalert2.min.js"></script>
+    <script src="assets/js/sweetalertFunction.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 

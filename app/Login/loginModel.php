@@ -35,4 +35,17 @@ class loginModel extends Model
             return False;
         }
     }
+    function isRegister(){
+        if(Session::has('level')){
+            if(Session::get('level') === 'Register'){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
 }

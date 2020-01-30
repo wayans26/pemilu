@@ -4,7 +4,7 @@
 <div class="row">
     <div class="card">
         <div class="card-header">
-            <center>Perolehan Suara</center>
+            <center>Perolehan Suara - <span id="total"></span></center>
         </div>
         <div class="card-body">
             <canvas id="myChart" style="max-height: 70vh;max-width: 100vw;"></canvas>
@@ -13,8 +13,10 @@
 </div>
 
 <script>
-    getStatus();
-    setInterval(getStatus, 1000 * 10);
+    $(document).ready(function(){
+        getStatus();
+        setInterval(getStatus, 1000 * 10);
+    });    
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -41,13 +43,15 @@
     }
 
     function setStatus(data) {
-        console.log(data);
+        // console.log(data);
         var nama_kandidat = [];
         var totalSuara = [];
 
-        for (i = 0; i < data.length; i++) {
-            nama_kandidat.push(data[i].nama_lengkap);
-            totalSuara.push(data[i].totalsuara);
+        $("#total").html(data.total.totalPemilih + "/" + data.total.totalSuara);
+
+        for (i = 0; i < data.data.length; i++) {
+            nama_kandidat.push(data.data[i].nama_lengkap);
+            totalSuara.push(data.data[i].totalsuara);
         }
         var chartdata = {
             labels: nama_kandidat,

@@ -10,5 +10,5 @@ class tbpemilih extends Model
     public $timestamps = false;
     protected $table = 'tbpemilih';
     protected $primaryKey = 'nim';
-    protected $fillable = ['nim', 'nama_lengkap', '_password','level'];
+    protected $fillable = ['nim', 'nama_lengkap', '_password','level','status_register'];
 }

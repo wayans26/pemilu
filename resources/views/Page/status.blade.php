@@ -36,7 +36,7 @@
                 "_token": "{{ csrf_token() }}"
             },
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 setStatus($.parseJSON(data))
 
             },
@@ -49,7 +49,7 @@
     }
 
     function setStatus(data) {
-        console.log(data);
+        // console.log(data);
 
         if (data.status === 1) {
             tmpData = "";
@@ -59,7 +59,8 @@
             }
             $(".statusUser").html(tmpData);
         } else {
-            alert("Terjadi Kesalahan Pada Database..!!");
+            $(".statusUser").html('');
+            // alert("Terjadi Kesalahan Pada Database..!!");
         }
     }
 

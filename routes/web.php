@@ -35,3 +35,4 @@ Route::post('/perolehansuara/get', 'Dashboard\perolehansuaraController@getPerole
 Route::get('/detailsuara', 'Dashboard\detailsuaraController@index');
 
 Route::get('/example', 'Dashboard\dashboardController@example');
+Route::post('/register', 'Dashboard\registerController@register');

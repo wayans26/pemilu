@@ -4,21 +4,41 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="assets/img/rel_icon.jpeg">
+    <link rel="icon" type="image/png" href="{{asset('assets/img/rel_icon.jpeg')}}">
     <title>
         Pemilu Raya - KMHD Stikom Bali
     </title>
+
+    {{-- css --}}
+
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" /> --}}
+    {{-- <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> --}}
+    <link href="{{asset('assets/css/all.css')}}" rel="stylesheet">
     <!-- Nucleo Icons -->
-    <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
-    <script src="assets/js/sweetalert2.min.js"></script>
-    <script src="assets/js/sweetalertFunction.js"></script>
+    <link href="{{asset('assets/css/black-dashboard.css?v=1.0.0')}}" rel="stylesheet" />
+    {{-- <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
+    <link rel="stylesheet" href="{{asset('assets/css/sweetalert2.min.css')}}">
+
+    {{-- js --}}
+    
+    <script src="{{asset('assets/js/sweetalert2.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
+    <script src="{{asset('assets/js/sweetalertFunction.js')}}"></script>
+    <!--   Core JS Files   -->
+    <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+    <!-- Chart JS -->
+    <script src="{{asset('assets/js/plugins/chartjs.min.js')}}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{asset('assets/js/black-dashboard.min.js?v=1.0.0')}}"></script>
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
@@ -38,12 +58,14 @@
                     </a>
                 </div>
                 <ul class="nav">
+                    @if (Session::get('level') === 'Peserta')
                     <li class="@yield('dashboard')">
                         <a href="/">
                             <i class="fa fa-home"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    @endif
                     @if (Session::get('level') === 'Admin')
                     <li class="@yield('status')">
                         <a href="/status">
@@ -147,7 +169,6 @@
             </footer>
         </div>
     </div>
-
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -167,27 +188,6 @@
             </div>
         </div>
     </div>
-
-    <!--   Core JS Files   -->
-    <script src="assets/js/core/jquery.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/core/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Chart JS -->
-    <script src="assets/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="assets/js/black-dashboard.min.js?v=1.0.0"></script>
-
-    <script>
-        $(document).ready(function () {
-            // Javascript method's body can be found in assets/js/demos.js
-            demo.initDashboardPageCharts();
-
-        });
-
-    </script>
 </body>
 
 </html>

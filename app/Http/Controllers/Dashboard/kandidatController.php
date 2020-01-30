@@ -16,6 +16,7 @@ class kandidatController extends Controller
     //
     function index(Request $eq, loginModel $login){
         if($login->isAdmin()){
+            // dd(tbkandidat::all());
             return view('Page.daftarkandidat',[
                 'kandidat'  => tbkandidat::all()
             ]);

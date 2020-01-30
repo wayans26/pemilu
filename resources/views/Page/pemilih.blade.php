@@ -47,7 +47,7 @@
 <div class="row">
     <div class="card">
         <div class="card-header">
-            <center>Daftar Pemilih Tetap</center>
+            <center>Daftar Pemilih Tetap - {{$total}}</center>
         </div>
         <div class="card-body">
             <table class="table table-stripped" id="datatable">

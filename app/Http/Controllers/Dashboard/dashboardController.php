@@ -24,9 +24,9 @@ class dashboardController extends Controller
         //     'photo'         => 'asset/img/anime3.png'
         // ]);  
         // tbvisimisi::create([
-        //     'nim'   => '170010122',
-        //     'visi'  => 'Ini Visi Shanti',
-        //     'misi'  => 'Ini Misi Shanti'
+        //     'nim'   => '04',
+        //     'visi'  => 'Menjadikan UKM KMHD sebagai wadah dalam mewujudkan sradha bakti kepada hyang widhi wasa dalam segala kegiatan berlandaskan tri hita karana',
+        //     'misi'  => 'Menjadikan UKM KMHD yang berinovatif,bertanggung jawab dan memiliki etos kerja yang tulus ikhlas.;Mempersatukan,mempererat dan mewujudkan ikatan menyama beraya antar anggota UKM KMHD.;Menjalin kerjasama dengan organisasi internal maupun external kampus yang dapat memberikan manfaat bagi para pihak.'
         // ]);     
         // $kandidat = tbkandidat::all();
         // return $kandidat;
@@ -52,7 +52,7 @@ class dashboardController extends Controller
                     'status_memilih'    => 1
                 ]);  
                 tbstatus::where([
-                    'ip_address'    => $_SERVER['REMOTE_ADDR']
+                    'nim'    => $req->session()->get('nim')
                 ])->update([
                     'status'        => 'offline'
                 ]);    

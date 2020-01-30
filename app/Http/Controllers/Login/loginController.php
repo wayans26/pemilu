@@ -14,18 +14,32 @@ use DB;
 class loginController extends Controller
 {
     function index(Request $req, loginModel $login){
+        // admin
+        // ur   : 170010139
+        // pass : 1duatiga
+        // register
+        // ur  : blinkit
+        // pass : 1duatiga
         // tbpemilih::create([
-        //     'nim'           => '180010131',
-        //     'nama_lengkap'  => 'Diah Cantiq',
+        //     'nim'           => 'blinkit',
+        //     'nama_lengkap'  => 'Wayan Setiawan',
         //     '_password'     => Hash::make('1duatiga'),
-        //     'level'         => 'Peserta'
+        //     'level'         => 'Register'
         // ]);        
         if($login->isLogin()){
-            return view('Page.index', [
-                'kandidat'  => DB::table('tbkandidat as kandidat')
-                ->join('tbvisimisi as visimisi','kandidat.nim','=','visimisi.nim')
-                ->select('kandidat.*', 'visimisi.visi as visi', 'visimisi.misi as misi')->get()
-            ]);
+            if($login->isRegister()){
+                return view('Page.register');
+            }
+            if($login->isAdmin()){
+                return redirect('/status');
+            }
+            else{
+                return view('Page.index', [
+                    'kandidat'  => DB::table('tbkandidat as kandidat')
+                    ->join('tbvisimisi as visimisi','kandidat.nim','=','visimisi.nim')
+                    ->select('kandidat.*', 'visimisi.visi as visi', 'visimisi.misi as misi')->get()
+                ]);
+            }
         }
         else{
             return view('Login.formLogin');
@@ -35,23 +49,28 @@ class loginController extends Controller
 
     function prosesLogin(Request $req){
         $data = $req->all();
-        // dd($data);
         $user = tbpemilih::where(['nim' => $data['nim']])->get();
         if(sizeof($user) > 0){
             foreach($user as $item){
                 if($item->status_memilih !== 1 && $item->status_register === 1){
-                    tbstatus::create([
-                        'nim'           => $item->nim,
-                        'ip_address'    => $_SERVER['REMOTE_ADDR'],
-                        'status'        => 'online'
-                    ]);
-                    $req->session()->put([
-                        'login' => True,
-                        'nim'   => $item->nim,
-                        'nama'  => $item->nama_lengkap,
-                        'level' => $item->level                 
-                    ]);
-                    return back();
+                    if(Hash::check($data['password'], $item->_password)){
+                        tbstatus::create([
+                            'nim'           => $item->nim,
+                            'ip_address'    => $_SERVER['REMOTE_ADDR'],
+                            'status'        => 'online'
+                        ]);
+                        $req->session()->put([
+                            'login' => True,
+                            'nim'   => $item->nim,
+                            'nama'  => $item->nama_lengkap,
+                            'level' => $item->level                 
+                        ]);
+                        return back();
+                    }
+                    else{
+                        return back()->with('status', 'Nim Atau Password Salah');
+                    }
+                    
                 }
                 else{
                     if($item->status_memilih === 1){
@@ -70,7 +89,7 @@ class loginController extends Controller
 
     function logout(Request $req){
         tbstatus::where([
-            'ip_address'    => $_SERVER['REMOTE_ADDR']
+            'nim'    => $req->session()->get('nim')
         ])->update([
             'status'        => 'offline'
         ]);

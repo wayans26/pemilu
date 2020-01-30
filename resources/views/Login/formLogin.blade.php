@@ -62,8 +62,8 @@
                                                 <div class="col-md-6"></div>
                                                 <div class="col-md-6">
                                                     <button type="reset"
-                                                        class="btn btn-danger btn-lg col-sm-3">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary btn-lg col-sm-3"
+                                                        class="btn btn-danger btn-lg">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary btn-lg"
                                                         name="btnLogin">Login</button>
                                                 </div>
                                             </div>

@@ -32,7 +32,7 @@
         <div class="card-header">
             Daftar Calon Kandidat
             <div class="row">
-                @foreach ($kandidat as $key=>$item)
+                @foreach ($kandidat as $key=>$item)                
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-header">
@@ -43,9 +43,9 @@
                         <div class="card-body">
                             <center>
                                 <a class="btn btn-primary" href="#" data-toggle="modal"
-                                    data-target='#update{{$item->nim}}'>Update</a>
+                                    data-target='#update0{{$item->nim}}'>Update</a>
                                 <a class="btn btn-danger" href="#" data-toggle="modal"
-                                    data-target='#delete{{$item->nim}}'>Delete</a>
+                                    data-target='#delete0{{$item->nim}}'>Delete</a>
                             </center>
 
                         </div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- modal update -->
-                <div class="modal fade" id="update{{$item->nim}}" role="dialog">
+                <div class="modal fade" id="update0{{$item->nim}}" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -66,7 +66,7 @@
                                     <input type="text" name="id_kandidat" value="" hidden="true">
                                     <div class="form-group">
                                         <label class="control-label" style="color: black;">Nim</label>
-                                        <input type="text" name="nim" value="{{$item->nim}}" class="form-control"
+                                        <input type="text" name="nim" value="0{{$item->nim}}" class="form-control"
                                             style="color: white;" readonly>
                                     </div>
                                     <div class="form-group">
@@ -96,7 +96,7 @@
                 </div>
 
                 <!-- modal delete -->
-                <div class="modal fade" id="delete{{$item->nim}}" role="dialog">
+                <div class="modal fade" id="delete0{{$item->nim}}" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">

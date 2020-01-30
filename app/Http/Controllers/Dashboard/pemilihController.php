@@ -15,7 +15,10 @@ class pemilihController extends Controller
     function index(loginModel $login){
         if($login->isAdmin()){
             return view('Page.pemilih',[
-                'pemilih'   => tbpemilih::where('level', '<>', 'Admin')->paginate(10)
+                'pemilih'   => tbpemilih::where('level', '<>', 'Admin')
+                ->where('level','<>','Register')->paginate(10),
+                'total' => tbpemilih::where('level', '<>', 'Admin')
+                ->where('level','<>','Register')->count()
             ]);
         }
         else{
@@ -30,7 +33,7 @@ class pemilihController extends Controller
                     'nim'           => $req->input('nim'),
                     'nama_lengkap'  => $req->input('nama'),
                     'level'         => 'Peserta',
-                    '_password'     => Hash::make('pemiluKMHD2019')
+                    '_password'     => Hash::make('pemiluKMHD2020')
                 ]);
                 return back()->with('status-tambah-berhasil', 'Data Peserta Berhasil Di tambahkan');
             }catch(\Exception $e){

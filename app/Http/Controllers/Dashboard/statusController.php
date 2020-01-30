@@ -24,7 +24,9 @@ class statusController extends Controller
         if($req->session()->get('level') === 'Admin'){
             $data = tbstatus::where([
                 'status'    => 'online'
-            ])->get();
+            ])
+            ->where('nim', '<>', '170010139')
+            ->where('nim', '<>', '1700101390')->get();
     
             if(sizeof($data) > 0){
                 return json_encode(array(

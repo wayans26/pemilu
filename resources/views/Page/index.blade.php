@@ -2,9 +2,10 @@
 @section('dashboard', 'active')
 @section('konten')
 @if (Session::has('status-vote-gagal'))
-    <script>
+<script>
     errorAlert("Vote Gagal")
-    </script>
+
+</script>
 @endif
 <div class="row">
     @foreach ($kandidat as $key=>$item)
@@ -44,11 +45,10 @@
                         <input type="text" name="nim" value="{{$item->nim}}" hidden="true">
                         <h3 style="color: black;">Yakin ingin memilih <strong>
                             </strong> ?</h3>
-                        <h3 style="color: black;"><strong>Administrator </strong>tidak dapat melakukan
-                            voting</h3>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" name="btnVote">Vote</button>
+                        <button type="submit" style="position: absolute;bottom: 10px;right: 10px"
+                            class="btn btn-success" name="btnVote">Vote</button>
                     </div>
                 </form>
             </div>
@@ -61,13 +61,16 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <br>
-                    <!-- <h4 class="modal-title">Vote Kandidat</h4> -->
                 </div>
                 <div class="modal-body">
                     <strong class="h2" style="color: black;">Visi</strong>
-                    <p>{{$item->visi}}</p><br>
+                    <p style="color: black;font-size: 14pt;">{{$item->visi}}</p><br>
                     <strong class="h2" style="color: black;">Misi</strong>
-                    <p>{{$item->misi}}</p>
+                    <ol style="font-size: 12pt;">
+                        @foreach (explode(';', $item->misi) as $misi)
+                        <li style="color: black;">{{$misi}}</li>
+                        @endforeach
+                    </ol>
                 </div>
             </div>
         </div>
